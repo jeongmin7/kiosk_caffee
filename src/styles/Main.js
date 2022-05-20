@@ -2,8 +2,15 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 export const Container = styled.div`
   width: 800px;
-
   margin: 100px auto;
+`;
+export const LogoWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+`;
+export const Logo = styled.img`
+  width: 200px;
 `;
 export const Button = styled.div`
   width: 810px;

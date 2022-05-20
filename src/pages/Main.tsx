@@ -7,10 +7,15 @@ import {
   CardImg,
   Container,
   Button,
+  Logo,
+  LogoWrap,
 } from "../styles/Main";
 const Main = () => {
   return (
     <Container>
+      <LogoWrap>
+        <Logo src="https://i.ibb.co/sj77nQ4/removebg-preview.png" />
+      </LogoWrap>
       <Button>
         <MenuLink to="javascript:void(0)">
           <Type>
