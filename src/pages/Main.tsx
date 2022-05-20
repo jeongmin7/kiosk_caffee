@@ -1,4 +1,5 @@
 import React from "react";
+import LogoCompo from "../components/LogoCompo.tsx";
 import {
   MenuLink,
   Title,
@@ -13,9 +14,7 @@ import {
 const Main = () => {
   return (
     <Container>
-      <LogoWrap>
-        <Logo src="https://i.ibb.co/sj77nQ4/removebg-preview.png" />
-      </LogoWrap>
+      <LogoCompo />
       <Button>
         <MenuLink to="javascript:void(0)">
           <Type>
