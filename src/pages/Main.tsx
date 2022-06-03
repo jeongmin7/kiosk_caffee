@@ -1,5 +1,5 @@
 import React from "react";
-import LogoCompo from "../components/LogoCompo.tsx";
+
 import {
   MenuLink,
   Title,
@@ -45,6 +45,7 @@ const Main = () => {
       </Button>
     </Container>
   );
+
 };
 
 export default Main;

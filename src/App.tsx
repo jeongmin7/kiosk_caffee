@@ -4,6 +4,7 @@ import SelectMenu from "./pages/SelectMenu.tsx";
 import Payment from "./pages/Payment.tsx";
 
 function App() {
+
   return (
     <div>
       <BrowserRouter>
@@ -15,6 +16,7 @@ function App() {
       </BrowserRouter>
     </div>
   );
+
 }
 
 export default App;
