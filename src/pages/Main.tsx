@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   MenuLink,
   Title,
@@ -46,6 +47,7 @@ const Main = () => {
       </Button>
     </Container>
   );
+
 };
 
 export default Main;
