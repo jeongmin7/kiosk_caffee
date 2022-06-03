@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import styled from "styled-components";
 import menu from "../dummyData";
@@ -115,6 +116,7 @@ const SelectMenu = () => {
       </Container>
     </BackgroundContainer>
   );
+
 };
 
 export default SelectMenu;
