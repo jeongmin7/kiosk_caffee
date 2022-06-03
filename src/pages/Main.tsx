@@ -47,7 +47,6 @@ const Main = () => {
       </Button>
     </Container>
   );
-
 };
 
 export default Main;

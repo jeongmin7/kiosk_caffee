@@ -1,10 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Main from "./pages/Main.tsx";
-import SelectMenu from "./pages/SelectMenu.tsx";
-import Payment from "./pages/Payment.tsx";
+import Main from "./pages/Main";
+import SelectMenu from "./pages/SelectMenu";
+import Payment from "./pages/Payment";
 
 function App() {
-
   return (
     <div>
       <BrowserRouter>
@@ -16,7 +15,6 @@ function App() {
       </BrowserRouter>
     </div>
   );
-
 }
 
 export default App;
