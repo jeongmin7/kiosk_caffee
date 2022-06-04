@@ -1,4 +1,5 @@
 import React from "react";
+import LogoCompo from "../components/LogoCompo";
 
 import {
   MenuLink,
