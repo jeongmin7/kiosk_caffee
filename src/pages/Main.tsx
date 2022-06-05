@@ -9,13 +9,15 @@ import {
   CardImg,
   Container,
   Button,
-  Logo,
   LogoWrap,
+  Logo,
 } from "../styles/Main";
-const Main = () => {
+const Main: React.FC = () => {
   return (
     <Container>
-      <LogoCompo />
+      <LogoWrap>
+        <Logo src="https://i.ibb.co/N2KNG9G/removebg-preview.png" />
+      </LogoWrap>
       <Button>
         <MenuLink to="/menu">
           <Type>
@@ -36,8 +38,8 @@ const Main = () => {
             <Img src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/07/[11108699]_20200724095028789.jpg" />
             <Title>굿즈</Title>
           </Type>
-        </MenuLink>{" "}
-        <MenuLink to="/menu">
+        </MenuLink>
+        <MenuLink to="menu">
           <Type>
             <CardImg src="https://image.istarbucks.co.kr/cardImg/20220315/008947_WEB.png" />
             <Title>기프트카드</Title>
@@ -46,7 +48,6 @@ const Main = () => {
       </Button>
     </Container>
   );
-
 };
 
 export default Main;

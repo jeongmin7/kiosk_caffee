@@ -4,7 +4,6 @@ import SelectMenu from "./pages/SelectMenu";
 import Payment from "./pages/Payment";
 
 function App() {
-
   return (
     <div>
       <BrowserRouter>
@@ -16,7 +15,6 @@ function App() {
       </BrowserRouter>
     </div>
   );
-
 }
 
 export default App;

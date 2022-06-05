@@ -1,10 +1,10 @@
-
-import { useState } from 'react';
+import { useState } from "react";
 import styled from "styled-components";
 import menu from "../dummyData";
 import { Tab } from "../components/Tab";
-import { Link } from 'react-router-dom';
-
+import { useDispatch, useSelector } from "react-redux";
+import Modal from "../components/Modal";
+import { Link } from "react-router-dom";
 
 const BackgroundContainer = styled.div`
   width: 98vw;
@@ -64,7 +64,7 @@ const MenuImgContainer = styled.div`
 
 const MenuImg = styled.img`
   width: 100%;
-  height:80%;
+  height: 80%;
   border: 1px solid black;
 `;
 
@@ -73,7 +73,7 @@ const MenuPrice = styled.div`
   height: 20%;
   border: 1px solid black;
   text-align: center;
-`
+`;
 
 const ButtonContainer = styled.div`
   width: 100%;
@@ -106,8 +106,11 @@ const PayButton = styled.button`
 `;
 
 const SelectMenu = () => {
+  const dispatch = useDispatch();
+  const isOpen = useSelector((state: any) => state.modalStatus.isOpen);
+
   const [select, setSelect] = useState({
-    name: '',
+    name: "",
     price: 0,
   })
   const [totalPrice, setTotalPrice] = useState(0)
@@ -116,19 +119,21 @@ const SelectMenu = () => {
     <BackgroundContainer>
       <Container>
         <LogoContainer>
-          <Link to="/"><Logo id="logo" src="../스타벅스_로고-removebg-preview.png"></Logo></Link>
+          <Link to="/"><Logo src="https://i.ibb.co/N2KNG9G/removebg-preview.png"></Logo></Link>
         </LogoContainer>
         <MenuTab1>
           <Tab select={select} setSelect={setSelect} totalPrice={totalPrice} setTotalPrice={setTotalPrice}></Tab>
           <ButtonContainer>
             <SumOfMoney>₩{totalPrice}</SumOfMoney>
-            <PayButton>결제하기</PayButton>
+            <PayButton onClick={() => dispatch({ type: "show" })}>
+              결제하기
+            </PayButton>
+            {isOpen === true ? <Modal /> : ""}
           </ButtonContainer>
         </MenuTab1>
       </Container>
     </BackgroundContainer>
   );
-
 };
 
 export default SelectMenu;

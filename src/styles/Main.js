@@ -8,15 +8,15 @@ const styled_components_1 = __importDefault(require("styled-components"));
 const react_router_dom_1 = require("react-router-dom");
 exports.Container = styled_components_1.default.div `
   width: 800px;
-  margin: 100px auto;
+  margin: auto;
 `;
 exports.LogoWrap = styled_components_1.default.div `
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
 `;
 exports.Logo = styled_components_1.default.img `
   width: 200px;
+  height: auto;
 `;
 exports.Button = styled_components_1.default.div `
   width: 810px;
