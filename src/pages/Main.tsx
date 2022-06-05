@@ -17,13 +17,13 @@ const Main = () => {
     <Container>
       <LogoCompo />
       <Button>
-        <MenuLink to="javascript:void(0)">
+        <MenuLink to="/menu">
           <Type>
             <Img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[110563]_20210426095937808.jpg" />
             <Title>음료</Title>
           </Type>
         </MenuLink>
-        <MenuLink to="javascript:void(0)">
+        <MenuLink to="/menu">
           <Type>
             <Img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[5110007181]_20210421164728664.jpg" />
             <Title>디저트</Title>
@@ -31,13 +31,13 @@ const Main = () => {
         </MenuLink>
       </Button>
       <Button>
-        <MenuLink to="javascript:void(0)">
+        <MenuLink to="/menu">
           <Type>
             <Img src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/07/[11108699]_20200724095028789.jpg" />
             <Title>굿즈</Title>
           </Type>
         </MenuLink>{" "}
-        <MenuLink to="javascript:void(0)">
+        <MenuLink to="/menu">
           <Type>
             <CardImg src="https://image.istarbucks.co.kr/cardImg/20220315/008947_WEB.png" />
             <Title>기프트카드</Title>
