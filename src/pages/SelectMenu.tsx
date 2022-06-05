@@ -25,7 +25,17 @@ const LogoContainer = styled.div`
   height: 80px;
   margin-top: 30px;
   border: 1px solid black;
+  display: flex;
+  justify-content: center;
 `;
+
+const Logo = styled.img`
+  width: 160px;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+`
 
 const MenuTab1 = styled.div`
   width: 100%;
@@ -102,20 +112,17 @@ const SelectMenu = () => {
   const [select, setSelect] = useState({
     name: "",
     price: 0,
-    quantity: 1,
-  });
-  const [totalPrice, setTotalPrice] = useState("10,000");
+  })
+  const [totalPrice, setTotalPrice] = useState(0)
 
   return (
     <BackgroundContainer>
       <Container>
-        <LogoContainer></LogoContainer>
+        <LogoContainer>
+          <Link to="/"><Logo src="https://i.ibb.co/N2KNG9G/removebg-preview.png"></Logo></Link>
+        </LogoContainer>
         <MenuTab1>
-          <Tab
-            select={select}
-            setSelect={setSelect}
-            setTotalPrice={setTotalPrice}
-          ></Tab>
+          <Tab select={select} setSelect={setSelect} totalPrice={totalPrice} setTotalPrice={setTotalPrice}></Tab>
           <ButtonContainer>
             <SumOfMoney>₩{totalPrice}</SumOfMoney>
             <PayButton onClick={() => dispatch({ type: "show" })}>

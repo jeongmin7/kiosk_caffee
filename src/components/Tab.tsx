@@ -80,12 +80,12 @@ const MenuPrice = styled.div<IInnerType>`
 //   text-align: center;
 // `;
 
-export const Tab: Function = ({ select, setSelect }: any) => {
+export const Tab: Function = ( {select, setSelect, totalPrice, setTotalPrice }: any) => {
   const [currentTab1, setCurrentTab1] = useState(0);
   const [currentTab2, setCurrentTab2] = useState(0);
   const [openModal, setOpenModal] = useState(false);
   const isOpen = useSelector((state: any) => state.optionModalStatus.isOpen);
-  console.log(isOpen);
+  // console.log(isOpen);
 
   //   const menuArr = [
   //     { name: 'Tab1', content: 'Tab menu ONE' },
@@ -112,16 +112,14 @@ export const Tab: Function = ({ select, setSelect }: any) => {
 
   const selectMenuHandler = (e: any) => {
     const selectedMenu = {
-      name: e.target.name.split("  ")[0],
-      price: Number(e.target.name.split("  ")[1]),
-      quantity: select.quantity,
-    };
-    setSelect(selectedMenu);
-    if (selectedMenu.name !== "undefined") {
-      setOpenModal(!openModal);
+      name: e.target.name.split('  ')[0],
+      price: Number(e.target.name.split('  ')[1]),
     }
-    console.log(selectedMenu);
-  };
+    setSelect(selectedMenu)
+    if(selectedMenu.name !== 'undefined'){
+      setOpenModal(!openModal)
+    }
+  }
   return (
     <>
       <div>
@@ -198,13 +196,13 @@ export const Tab: Function = ({ select, setSelect }: any) => {
                 );
               })}
         </MenuContainer>
-        {openModal ? (
-          <OptionModal
-            setOpenModal={setOpenModal}
-            select={select}
-            setSelect={setSelect}
-          ></OptionModal>
-        ) : null}
+        { openModal ? 
+            <OptionModal 
+                setOpenModal={setOpenModal} 
+                select={select}
+                totalPrice={totalPrice}
+                setTotalPrice={setTotalPrice}
+            ></OptionModal> : null}
       </div>
     </>
   );

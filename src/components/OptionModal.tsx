@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
+
 const ModalBackdrop = styled.div`
   position: fixed;
   z-index: 999;
@@ -108,15 +109,33 @@ const SizeOptionContainer = styled.div`
   display: flex;
 `;
 
-const SizeOption = styled.div`
-  width: 120px;
-  height: 120px;
-  border: 1px solid black;
-  margin-right: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+const SizeOption = styled.label`
+    width: 120px;
+    height: 120px;
+    border: 1px solid black;
+    margin-right: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+`;
+
+const RadioButton = styled.input.attrs({
+    type: 'radio'
+})`
+    display: none;
+    &:checked + ${SizeOption}{
+        width: 120px;
+        height: 120px;
+        border: 1px solid black;
+        background-color: #036635;
+        color: white;
+        margin-right: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
 `;
 
 const ButtonContainer = styled.div`
@@ -151,21 +170,44 @@ const Button2 = styled.button`
   cursor: pointer;
 `;
 
-const OptionModal = ({ setOpenModal, select, setSelect }: any) => {
-  const openModalHandler = () => {
-    setOpenModal(false);
-  };
-
-  const quantityHandler = (e: any) => {
-    setSelect({
-      name: select.name,
+const OptionModal = ({setOpenModal, select, totalPrice, setTotalPrice}: any) => {
+  
+  const [size, setSize] = useState('R');
+  const [quantity, setQuantity] = useState(1)
+  const [price, setPrice] = useState(select.price)
+  const [goToCart, setGoToCart] = useState({
+      name: select.name + `(${size})`,
       price: select.price,
-      quantity: e.target.value,
-    });
+      quantity: quantity
+  })
+  const openModalHandler = () => {
+      setOpenModal(false);
   };
+  const quantityHandler = (e:any) => {
+    setQuantity(e.target.value)
+  }
   const dispatch = useDispatch();
 
-  console.log(select);
+  const sizeHandler = (e:any) => {
+      setSize(e.target.value);
+      if(e.target.value === 'L'){
+        setPrice(price+1000)
+      }else{
+        setPrice(select.price)
+      }
+  }
+
+  const goToCartHandler = (e:any) => {
+    setGoToCart({
+        name: select.name + `(${size})`,
+        price: price,
+        quantity: quantity
+    })
+    setTotalPrice(totalPrice + (price * quantity))
+    setOpenModal(false);
+  }
+  console.log(size, price, quantity)
+  console.log(goToCart)
   return (
     <>
       <ModalContainer>
@@ -175,34 +217,41 @@ const OptionModal = ({ setOpenModal, select, setSelect }: any) => {
               <Container1>
                 <MenuImgContainer></MenuImgContainer>
                 <Container2>
-                  <MenuName>{select.name}</MenuName>
-                  <Container3>
-                    <MenuPrice>₩{select.price}</MenuPrice>
-                    <Counter
-                      min={1}
-                      defaultValue={select.quantity}
-                      onChange={quantityHandler}
-                    ></Counter>
-                  </Container3>
+                    <MenuName>{select.name}</MenuName>
+                    <Container3>
+                        <MenuPrice>₩{price}</MenuPrice>
+                        <Counter 
+                            min={1} 
+                            defaultValue={quantity}
+                            onChange={quantityHandler}
+                        ></Counter>
+                    </Container3>
                 </Container2>
-              </Container1>
-              <TextContainer>사이즈를 선택하세요</TextContainer>
-              <SizeOptionContainer>
-                <SizeOption>Regular</SizeOption>
-                <SizeOption>
-                  Large
-                  <br />
-                  (+1000)
-                </SizeOption>
-              </SizeOptionContainer>
-              <ButtonContainer>
-                <Button1
-                  onClick={() => {
-                    console.log("1");
-                  }}
+            </Container1>
+            <TextContainer>사이즈를 선택하세요</TextContainer>
+            <SizeOptionContainer>
+                <RadioButton
+                    id="Regular"
+                    className="radioBtn"
+                    name="radio"
+                    value="R"
+                    checked={size === "R"}
+                    onChange={sizeHandler}
                 >
-                  담기
-                </Button1>
+                </RadioButton>
+                <SizeOption htmlFor="Regular">Regular</SizeOption>
+                <RadioButton
+                    id="Large"
+                    className="radioBtn"
+                    name="radio"
+                    value="L"
+                    onChange={sizeHandler}
+                >
+                </RadioButton>
+                <SizeOption htmlFor='Large'>Large<br/>(+1000)</SizeOption>
+            </SizeOptionContainer>
+            <ButtonContainer>
+                <Button1 onClick={goToCartHandler}>담기</Button1>
                 <Button2 onClick={openModalHandler}>뒤로</Button2>
               </ButtonContainer>
             </ModalView>
