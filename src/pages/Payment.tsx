@@ -1,9 +1,14 @@
 import React from "react";
+import LogoCompo from "../components/LogoCompo";
+import Modal from "../components/Modal";
+const Payment: React.FC = () => {
+  return (
+    <div>
+      <LogoCompo />
 
-const Payment = () => {
-
-  return <div>결제하기</div>;
-
+      <Modal />
+    </div>
+  );
 };
 
 export default Payment;
