@@ -80,7 +80,7 @@ const MenuPrice = styled.div<IInnerType>`
 //   text-align: center;
 // `;
 
-export const Tab: Function = ( {select, setSelect}: any) => {
+export const Tab: Function = ( {select, setSelect, totalPrice, setTotalPrice }: any) => {
   const [currentTab1, setCurrentTab1] = useState(0);
   const [currentTab2, setCurrentTab2] = useState(0);
   const [openModal, setOpenModal] = useState(false);
@@ -112,13 +112,11 @@ export const Tab: Function = ( {select, setSelect}: any) => {
     const selectedMenu = {
       name: e.target.name.split('  ')[0],
       price: Number(e.target.name.split('  ')[1]),
-      quantity: select.quantity,
     }
     setSelect(selectedMenu)
     if(selectedMenu.name !== 'undefined'){
       setOpenModal(!openModal)
     }
-    console.log(selectedMenu)
   }
   return (
     <>
@@ -172,7 +170,8 @@ export const Tab: Function = ( {select, setSelect}: any) => {
             <OptionModal 
                 setOpenModal={setOpenModal} 
                 select={select}
-                setSelect={setSelect}
+                totalPrice={totalPrice}
+                setTotalPrice={setTotalPrice}
             ></OptionModal> : null}
       </div>
     </>
